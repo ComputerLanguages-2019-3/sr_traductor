@@ -1,4 +1,4 @@
-// Generated from /home/laura-angelica/Documents/UNAL/2019-2/languages/Traductor simple/grammar/SRgrammar.g4 by ANTLR 4.7.2
+// Generated from /home/laura-angelica/Documents/UNAL/2019-2/languages/SR_traductor/grammar/SRgrammar.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -27,6 +27,16 @@ public interface SRgrammarListener extends ParseTreeListener {
 	 */
 	void exitSeparate_body(SRgrammarParser.Separate_bodyContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SRgrammarParser#maybe_params}.
+	 * @param ctx the parse tree
+	 */
+	void enterMaybe_params(SRgrammarParser.Maybe_paramsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SRgrammarParser#maybe_params}.
+	 * @param ctx the parse tree
+	 */
+	void exitMaybe_params(SRgrammarParser.Maybe_paramsContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SRgrammarParser#spec_body}.
 	 * @param ctx the parse tree
 	 */
@@ -36,6 +46,16 @@ public interface SRgrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSpec_body(SRgrammarParser.Spec_bodyContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SRgrammarParser#comp_params}.
+	 * @param ctx the parse tree
+	 */
+	void enterComp_params(SRgrammarParser.Comp_paramsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SRgrammarParser#comp_params}.
+	 * @param ctx the parse tree
+	 */
+	void exitComp_params(SRgrammarParser.Comp_paramsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SRgrammarParser#combined_specpart}.
 	 * @param ctx the parse tree
@@ -47,6 +67,16 @@ public interface SRgrammarListener extends ParseTreeListener {
 	 */
 	void exitCombined_specpart(SRgrammarParser.Combined_specpartContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SRgrammarParser#body_stmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterBody_stmt(SRgrammarParser.Body_stmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SRgrammarParser#body_stmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitBody_stmt(SRgrammarParser.Body_stmtContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SRgrammarParser#body_stmt_ls}.
 	 * @param ctx the parse tree
 	 */
@@ -56,6 +86,16 @@ public interface SRgrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBody_stmt_ls(SRgrammarParser.Body_stmt_lsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SRgrammarParser#id_opt}.
+	 * @param ctx the parse tree
+	 */
+	void enterId_opt(SRgrammarParser.Id_optContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SRgrammarParser#id_opt}.
+	 * @param ctx the parse tree
+	 */
+	void exitId_opt(SRgrammarParser.Id_optContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SRgrammarParser#end_id}.
 	 * @param ctx the parse tree
@@ -357,6 +397,36 @@ public interface SRgrammarListener extends ParseTreeListener {
 	 */
 	void exitDo_stmt(SRgrammarParser.Do_stmtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SRgrammarParser#write_stmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterWrite_stmt(SRgrammarParser.Write_stmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SRgrammarParser#write_stmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitWrite_stmt(SRgrammarParser.Write_stmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SRgrammarParser#write_ls}.
+	 * @param ctx the parse tree
+	 */
+	void enterWrite_ls(SRgrammarParser.Write_lsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SRgrammarParser#write_ls}.
+	 * @param ctx the parse tree
+	 */
+	void exitWrite_ls(SRgrammarParser.Write_lsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SRgrammarParser#id_list}.
+	 * @param ctx the parse tree
+	 */
+	void enterId_list(SRgrammarParser.Id_listContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SRgrammarParser#id_list}.
+	 * @param ctx the parse tree
+	 */
+	void exitId_list(SRgrammarParser.Id_listContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SRgrammarParser#guarded_cmd}.
 	 * @param ctx the parse tree
 	 */
@@ -557,6 +627,16 @@ public interface SRgrammarListener extends ParseTreeListener {
 	 */
 	void exitStmt(SRgrammarParser.StmtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SRgrammarParser#post_processing_opt}.
+	 * @param ctx the parse tree
+	 */
+	void enterPost_processing_opt(SRgrammarParser.Post_processing_optContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SRgrammarParser#post_processing_opt}.
+	 * @param ctx the parse tree
+	 */
+	void exitPost_processing_opt(SRgrammarParser.Post_processing_optContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SRgrammarParser#proc}.
 	 * @param ctx the parse tree
 	 */
@@ -706,6 +786,16 @@ public interface SRgrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitOper_def_lp(SRgrammarParser.Oper_def_lpContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SRgrammarParser#oper_def_lp_aux}.
+	 * @param ctx the parse tree
+	 */
+	void enterOper_def_lp_aux(SRgrammarParser.Oper_def_lp_auxContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SRgrammarParser#oper_def_lp_aux}.
+	 * @param ctx the parse tree
+	 */
+	void exitOper_def_lp_aux(SRgrammarParser.Oper_def_lp_auxContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SRgrammarParser#op_or_ext}.
 	 * @param ctx the parse tree
@@ -857,15 +947,15 @@ public interface SRgrammarListener extends ParseTreeListener {
 	 */
 	void exitNew_item(SRgrammarParser.New_itemContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SRgrammarParser#subscriṕts_opt}.
+	 * Enter a parse tree produced by {@link SRgrammarParser#subscripts_opt}.
 	 * @param ctx the parse tree
 	 */
-	void enterSubscriṕts_opt(SRgrammarParser.Subscriṕts_optContext ctx);
+	void enterSubscripts_opt(SRgrammarParser.Subscripts_optContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SRgrammarParser#subscriṕts_opt}.
+	 * Exit a parse tree produced by {@link SRgrammarParser#subscripts_opt}.
 	 * @param ctx the parse tree
 	 */
-	void exitSubscriṕts_opt(SRgrammarParser.Subscriṕts_optContext ctx);
+	void exitSubscripts_opt(SRgrammarParser.Subscripts_optContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SRgrammarParser#return_spec_null}.
 	 * @param ctx the parse tree
@@ -1267,6 +1357,16 @@ public interface SRgrammarListener extends ParseTreeListener {
 	 */
 	void exitBounds(SRgrammarParser.BoundsContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link SRgrammarParser#bound_lpaux}.
+	 * @param ctx the parse tree
+	 */
+	void enterBound_lpaux(SRgrammarParser.Bound_lpauxContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SRgrammarParser#bound_lpaux}.
+	 * @param ctx the parse tree
+	 */
+	void exitBound_lpaux(SRgrammarParser.Bound_lpauxContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link SRgrammarParser#bound_lp}.
 	 * @param ctx the parse tree
 	 */
@@ -1287,16 +1387,6 @@ public interface SRgrammarListener extends ParseTreeListener {
 	 */
 	void exitBracketed_list(SRgrammarParser.Bracketed_listContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SRgrammarParser#subscriṕts}.
-	 * @param ctx the parse tree
-	 */
-	void enterSubscriṕts(SRgrammarParser.SubscriṕtsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link SRgrammarParser#subscriṕts}.
-	 * @param ctx the parse tree
-	 */
-	void exitSubscriṕts(SRgrammarParser.SubscriṕtsContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link SRgrammarParser#id_subs}.
 	 * @param ctx the parse tree
 	 */
@@ -1306,6 +1396,16 @@ public interface SRgrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitId_subs(SRgrammarParser.Id_subsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SRgrammarParser#id_subs_lpaux}.
+	 * @param ctx the parse tree
+	 */
+	void enterId_subs_lpaux(SRgrammarParser.Id_subs_lpauxContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SRgrammarParser#id_subs_lpaux}.
+	 * @param ctx the parse tree
+	 */
+	void exitId_subs_lpaux(SRgrammarParser.Id_subs_lpauxContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SRgrammarParser#id_subs_lp}.
 	 * @param ctx the parse tree
@@ -1406,6 +1506,26 @@ public interface SRgrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSpec_stmt(SRgrammarParser.Spec_stmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SRgrammarParser#optional_sep}.
+	 * @param ctx the parse tree
+	 */
+	void enterOptional_sep(SRgrammarParser.Optional_sepContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SRgrammarParser#optional_sep}.
+	 * @param ctx the parse tree
+	 */
+	void exitOptional_sep(SRgrammarParser.Optional_sepContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link SRgrammarParser#spec_stmt_lsaux}.
+	 * @param ctx the parse tree
+	 */
+	void enterSpec_stmt_lsaux(SRgrammarParser.Spec_stmt_lsauxContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link SRgrammarParser#spec_stmt_lsaux}.
+	 * @param ctx the parse tree
+	 */
+	void exitSpec_stmt_lsaux(SRgrammarParser.Spec_stmt_lsauxContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link SRgrammarParser#spec_stmt_ls}.
 	 * @param ctx the parse tree

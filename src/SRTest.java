@@ -19,7 +19,7 @@ public class SRTest {
             ParseTree tree = parser.component(); // comienza el analisis en la regla inicial
             ParseTreeWalker walker = new ParseTreeWalker();
             walker.walk(new SRToTest(), tree);
-            System.out.println(tree.toStringTree(parser)); // imprime el arbol en forma textual
+            //System.out.println(tree.toStringTree(parser)); // imprime el arbol en forma textual
         } catch (Exception e){
             System.err.println("Error (Test): " + e);
         }

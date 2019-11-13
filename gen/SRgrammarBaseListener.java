@@ -1,4 +1,4 @@
-// Generated from /home/laura-angelica/Documents/UNAL/2019-2/languages/Traductor simple/grammar/SRgrammar.g4 by ANTLR 4.7.2
+// Generated from /home/laura-angelica/Documents/UNAL/2019-2/languages/SR_traductor/grammar/SRgrammar.g4 by ANTLR 4.7.2
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -39,6 +39,18 @@ public class SRgrammarBaseListener implements SRgrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterMaybe_params(SRgrammarParser.Maybe_paramsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMaybe_params(SRgrammarParser.Maybe_paramsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterSpec_body(SRgrammarParser.Spec_bodyContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -46,6 +58,18 @@ public class SRgrammarBaseListener implements SRgrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitSpec_body(SRgrammarParser.Spec_bodyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComp_params(SRgrammarParser.Comp_paramsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComp_params(SRgrammarParser.Comp_paramsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -63,6 +87,18 @@ public class SRgrammarBaseListener implements SRgrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterBody_stmt(SRgrammarParser.Body_stmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBody_stmt(SRgrammarParser.Body_stmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterBody_stmt_ls(SRgrammarParser.Body_stmt_lsContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -70,6 +106,18 @@ public class SRgrammarBaseListener implements SRgrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitBody_stmt_ls(SRgrammarParser.Body_stmt_lsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterId_opt(SRgrammarParser.Id_optContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitId_opt(SRgrammarParser.Id_optContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -435,6 +483,42 @@ public class SRgrammarBaseListener implements SRgrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterWrite_stmt(SRgrammarParser.Write_stmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWrite_stmt(SRgrammarParser.Write_stmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterWrite_ls(SRgrammarParser.Write_lsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWrite_ls(SRgrammarParser.Write_lsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterId_list(SRgrammarParser.Id_listContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitId_list(SRgrammarParser.Id_listContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterGuarded_cmd(SRgrammarParser.Guarded_cmdContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -675,6 +759,18 @@ public class SRgrammarBaseListener implements SRgrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterPost_processing_opt(SRgrammarParser.Post_processing_optContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPost_processing_opt(SRgrammarParser.Post_processing_optContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterProc(SRgrammarParser.ProcContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -850,6 +946,18 @@ public class SRgrammarBaseListener implements SRgrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitOper_def_lp(SRgrammarParser.Oper_def_lpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOper_def_lp_aux(SRgrammarParser.Oper_def_lp_auxContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOper_def_lp_aux(SRgrammarParser.Oper_def_lp_auxContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1035,13 +1143,13 @@ public class SRgrammarBaseListener implements SRgrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSubscriṕts_opt(SRgrammarParser.Subscriṕts_optContext ctx) { }
+	@Override public void enterSubscripts_opt(SRgrammarParser.Subscripts_optContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSubscriṕts_opt(SRgrammarParser.Subscriṕts_optContext ctx) { }
+	@Override public void exitSubscripts_opt(SRgrammarParser.Subscripts_optContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1527,6 +1635,18 @@ public class SRgrammarBaseListener implements SRgrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterBound_lpaux(SRgrammarParser.Bound_lpauxContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBound_lpaux(SRgrammarParser.Bound_lpauxContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterBound_lp(SRgrammarParser.Bound_lpContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -1551,18 +1671,6 @@ public class SRgrammarBaseListener implements SRgrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSubscriṕts(SRgrammarParser.SubscriṕtsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSubscriṕts(SRgrammarParser.SubscriṕtsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterId_subs(SRgrammarParser.Id_subsContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -1570,6 +1678,18 @@ public class SRgrammarBaseListener implements SRgrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitId_subs(SRgrammarParser.Id_subsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterId_subs_lpaux(SRgrammarParser.Id_subs_lpauxContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitId_subs_lpaux(SRgrammarParser.Id_subs_lpauxContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1690,6 +1810,30 @@ public class SRgrammarBaseListener implements SRgrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitSpec_stmt(SRgrammarParser.Spec_stmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOptional_sep(SRgrammarParser.Optional_sepContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOptional_sep(SRgrammarParser.Optional_sepContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSpec_stmt_lsaux(SRgrammarParser.Spec_stmt_lsauxContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSpec_stmt_lsaux(SRgrammarParser.Spec_stmt_lsauxContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -7,24 +7,40 @@ grammar SRgrammar;
 
 combined_component: combined_specpart body_stmt_ls end_id;
 
-separate_body: ;
+separate_body: TK_BODY TK_ID body_stmt_ls end_id;
 
+maybe_params:
+             |comp_params ;
 
-spec_body: ;
+spec_body: end_id
+          |TK_BODY TK_ID maybe_params body_stmt_ls end_id
+          |TK_BODY TK_ID maybe_params TK_SEPARATE;
 
-combined_specpart: ;
-body_stmt_ls: ;
-end_id: ;
+comp_params: parameters;
 
+combined_specpart: comp_label comp_params ;
+
+body_stmt: common_stmt
+           |expr
+           |body_only
+           |extend_clause;
+
+body_stmt_ls: body_stmt
+            |body_stmt_ls TK_SEPARATOR body_stmt;
+
+id_opt:
+       |TK_ID;
+
+end_id: TK_END id_opt;
 
 concurrent_invocation: explicit_call
                      | send_stmt
                      | expr;
 
-separator_opt: separator_opt TK_SEPARATOR
+separator_opt: TK_SEPARATOR separator_opt
              | ;
 
-concurrent_cmd: quantifiers_opt separator_opt concurrent_invocation;
+concurrent_cmd: quantifiers_opt separator_opt concurrent_invocation post_processing_opt;
 
 concurrent_cmd_lp: concurrent_cmd
                  | concurrent_cmd_lp TK_PARALLEL concurrent_cmd;
@@ -41,21 +57,24 @@ sync_expr_opt: TK_AND expr
 
 sched_expr_opt: TK_BY expr
              | ;
-return_name_opt: TK_RETURNS TK_ID;
+return_name_opt:|
+                TK_RETURNS TK_ID;
 
-id_ls: id_lp;
+id_ls:
+      |id_lp;
 
 param_names: TK_LPAREN id_ls TK_RPAREN return_name_opt;
 
 subscripts: bracketed_list
-          | bracketed_list subscriṕts;
+          | bracketed_list subscripts;
 
 in_op: qualified_id
      | qualified_id subscripts;
 
 in_spec: in_op param_names;
 
-quantifiers_opt: TK_LPAREN quantifier_lp TK_PAREN;
+quantifiers_opt:
+                |TK_LPAREN quantifier_lp TK_RPAREN;
 
 in_cmd: quantifiers_opt in_spec sync_expr_opt sched_expr_opt TK_ARROW block;
 
@@ -64,7 +83,7 @@ in_cmd_lp: in_cmd in_cmd_lp_aux;
 in_cmd_lp_aux: TK_SQUARE in_cmd in_cmd_lp_aux
                | ;
 
-input_stmt: TK_IN in_cmd_lp else_cmd_opt TK_IN;
+input_stmt: TK_IN in_cmd_lp else_cmd_opt TK_NI;
 
 
 v_stmt: TK_V TK_LPAREN expr TK_RPAREN;
@@ -78,7 +97,7 @@ step_opt: TK_BY expr
 direction: TK_TO
          | TK_DOWNTO;
 
-quantifier: TK_ID TK_TK_ASSIGN expr direction expr step_opt such_that_opt;
+quantifier: TK_ID TK_ASSIGN expr direction expr step_opt such_that_opt;
 
 quantifier_lp: quantifier
              | quantifier_lp TK_COMMA quantifier;
@@ -90,10 +109,19 @@ for_all_stmt: TK_FA quantifier_lp TK_ARROW block TK_AF;
 
 do_stmt:TK_DO guarded_cmd_lp else_cmd_opt TK_OD;
 
+write_stmt: TK_WRITE TK_LPAREN write_ls TK_RPAREN;
+
+write_ls: TK_QUOTE id_list TK_QUOTE TK_COMMA write_ls
+          |TK_QUOTE id_list TK_QUOTE TK_COMMA TK_ID TK_COMMA write_ls
+          |TK_QUOTE id_list TK_QUOTE ;
+
+id_list: TK_ID id_list
+        |TK_ID;
+
 guarded_cmd: expr TK_ARROW block;
 
 guarded_cmd_lp: guarded_cmd
-              | guarded_cmd_lp TK_SWAURE guarded_cmd;
+              | guarded_cmd_lp TK_SQUARE guarded_cmd;
 
 if_stmt: TK_IF guarded_cmd_lp else_cmd_opt TK_FI;
 
@@ -146,12 +174,16 @@ stmt: skip_stmt
     | begin_end
     | if_stmt
     | do_stmt
+    | write_stmt
     | for_all_stmt
     | v_stmt
     | input_stmt
     | receive_stmt
     | p_stmt
     | concurrent_stmt;
+
+post_processing_opt: TK_ARROW block
+                    | ;
 
 proc: TK_PROC TK_ID param_names block end_id;
 
@@ -164,6 +196,7 @@ initial_opt: | TK_INITIAL;
 initial_block: TK_INITIAL block TK_END initial_opt;
 
 final_opt: | TK_FINAL;
+
 final_block: TK_FINAL block TK_END final_opt;
 
 
@@ -186,11 +219,14 @@ import_clause: TK_IMPORT import_list;
 colon_opt: TK_COLON
          | ;
 
-oper_def : id_subs_lp op_prototype
-         | id_subs_lp colon_opt qualified_id;
+oper_def : op_prototype
+         | colon_opt qualified_id;
 
-oper_def_lp: oper_def
-            | oper_def_lp TK_COMMA oper_def;
+oper_def_lp: id_subs_lp oper_def oper_def_lp_aux
+            | TK_COMMA oper_def oper_def_lp_aux;
+
+oper_def_lp_aux: TK_COMMA oper_def
+                | ;
 
 op_or_ext: TK_OP
          | TK_EXTERNAL;
@@ -232,13 +268,13 @@ suffix_expr: TK_INCR
             | TK_DECR
             | TK_HAT
             | TK_PERIOD TK_ID
-            | TK_LBRACKET bound_lp TK_LBRACKET;
+            | TK_LBRACKET bound_lp TK_RBRACKET;
 
 new_item: unsub_type
         | TK_SEM sem_proto
         | TK_OP op_prototype;
 
-subscriṕts_opt: subscriṕts
+subscripts_opt: subscripts
               | ;
 
 return_spec_null: ;
@@ -250,11 +286,13 @@ op_restriction: TK_CALL
               | TK_CALL TK_COMMA TK_SEND
               | TK_SEND TK_COMMA TK_CALL;
 
-op_restriction_opt: TK_LBRACE op_restriction TK_RBRACE;
+op_restriction_opt:
+              |TK_LBRACE op_restriction TK_RBRACE;
 
-return_spec_opt: TK_RETURNS type
-               | TK_RETURNS id_subs TK_COLON type
-               | TK_RETURNS TK_ID TK_BOGUS;
+return_spec_opt:
+               |TK_RETURNS type
+               |TK_RETURNS id_subs TK_COLON type
+               |TK_RETURNS TK_ID TK_BOGUS;
 
 param_kind_opt: TK_VAL
               | TK_VAR
@@ -262,14 +300,17 @@ param_kind_opt: TK_VAL
               | TK_REF
               | ;
 
-param_spec: param_kind_opt type ;
+param_spec: param_kind_opt type
+            |param_kind_opt id_subs_lp TK_COLON type
+            |param_kind_opt capability_def TK_SEPARATOR param_spec_ls;
 
 param_spec_lp: param_spec
-             | param_spec TK_SEPARATOR
-             | param_spec TK_SEPARATOR param_spec_lp;
+             | param_spec TK_COLON
+             | param_spec TK_COLON param_spec_lp;
 
-param_spec_ls: param_spec_lp
-             | ;
+param_spec_ls:
+             |param_spec_ls TK_COMMA param_spec_ls
+             |param_spec_lp;
 
 parameters:TK_LPAREN param_spec_ls TK_RPAREN;
 
@@ -326,7 +367,7 @@ unsub_type: basic_type
           | capability_def
           | qualified_id;
 
-type: subscriṕts unsub_type
+type: subscripts unsub_type
     | unsub_type;
 
 paren_expr: TK_LPAREN expr TK_RPAREN;
@@ -341,7 +382,7 @@ prefix_expr: TK_NOT expr
            | TK_STRING paren_expr
            | TK_LOW TK_LPAREN type TK_RPAREN
            | TK_HIGH TK_LPAREN type TK_RPAREN
-           | TK_NEW TK_LPAREN subscriṕts_opt new_item TK_RPAREN;
+           | TK_NEW TK_LPAREN subscripts_opt new_item TK_RPAREN;
 
 binary_expr: TK_EXPON expr
            | TK_ASTER expr
@@ -374,10 +415,13 @@ binary_expr: TK_EXPON expr
            | TK_AUG_AND expr
            | TK_AUG_CONCAT expr
            | TK_AUG_RSHIFT expr
-           | TK_AUG_LSHIFT expr;
+           | TK_AUG_LSHIFT expr
+           | TK_COLON expr;
+
 
 constr_item: expr
-           | TK_LBRACKET expr TK_RBRACKET expr;
+           | TK_LBRACKET expr TK_RBRACKET expr
+           | expr TK_COLON type;
 
 constr_item_lp: constr_item
                | constr_item_lp TK_COMMA constr_item;
@@ -392,7 +436,7 @@ paren_item_ls: expr_lp
 
 paren_list: TK_LPAREN paren_item_ls TK_RPAREN;
 
-invocation: paren_list;
+invocation: expr paren_list;
 
 literal: TK_ILIT
        | TK_RLIT
@@ -402,7 +446,9 @@ literal: TK_ILIT
        | TK_NLIT
        | TK_FLIT;
 
-expr: TK_ID
+expr:INT
+    |REAL
+    |TK_ID
     | literal
     | expr invocation
     | constructor
@@ -414,19 +460,20 @@ expr: TK_ID
 bounds: expr
       | TK_ASTER;
 
-bound_lp: bounds
-        | bound_lp TK_COMMA bounds;
+bound_lpaux:
+            |TK_COMMA bounds bound_lpaux;
+
+bound_lp: bounds bound_lpaux;
 
 bracketed_list: TK_LBRACKET bound_lp TK_RBRACKET;
 
-subscriṕts: bracketed_list
-           | bracketed_list subscriṕts;
+id_subs: TK_ID subscripts
+        |TK_ID;
 
-id_subs: TK_ID
-        | TK_ID subscriṕts;
+id_subs_lpaux:
+            |TK_COMMA id_subs id_subs_lpaux;
 
-id_subs_lp: id_subs
-          | id_subs_lp TK_COMMA id_subs;
+id_subs_lp: id_subs id_subs_lpaux;
 
 var_def: id_subs_lp var_att;
 
@@ -457,8 +504,14 @@ spec_stmt: common_stmt
           | extend_clause
           | body_only;
 
-spec_stmt_ls: spec_stmt
-            | spec_stmt_ls TK_SEPARATOR spec_stmt;
+
+optional_sep:
+            |TK_SEPARATOR;
+
+spec_stmt_lsaux:
+                |TK_SEPARATOR spec_stmt spec_stmt_lsaux;
+
+spec_stmt_ls: spec_stmt spec_stmt_lsaux;
 
 comp_kwd: TK_GLOBAL |
           TK_RESOURCE;
@@ -467,18 +520,25 @@ comp_label: comp_kwd TK_ID;
 
 spec_component : comp_label spec_stmt_ls spec_body;
 
-component  : spec_component TK_SEPARATOR
-            | combined_component TK_SEPARATOR
-            | separate_body TK_SEPARATOR; // must match at least one value
+
+
+component  :
+            |spec_component optional_sep
+            | combined_component optional_sep
+            | separate_body optional_sep; // must match at least one value
 
 /** A value can be either a nested array/struct or a simple integer (INT) */
 
 // parser rules start with lowercase letters, lexer rules with uppercase
 INT :   [0-9]+ ;             // Define token INT as one or more digits
+REAL:  INT+'.'INT;
 WS  :   [ \t\r\n]+ -> skip ; // Define whitespace rule, toss it out
+LINE_COMMENT: '#' ~[\r\n]* -> skip;
 TK_SEPARATOR: ';';
 TK_RESOURCE: 'resource';
 TK_GLOBAL: 'global';
+TK_BODY: 'body';
+TK_SEPARATE: 'separate';
 TK_EXTEND: 'extend';
 TK_IMPORT: 'import';
 
@@ -502,6 +562,7 @@ TK_RPAREN: ')';
 TK_LBRACKET: '[';
 TK_RBRACKET: ']';
 
+TK_QUOTE: '"';
 TK_EXPON: '**';
 TK_DIV: '/';
 TK_REMDR: '%';
@@ -515,6 +576,9 @@ TK_GT: '>';
 TK_LT: '<';
 TK_AND: '&';
 TK_OR: '|';
+TK_ARROW:'->';
+TK_SQUARE:'[]';
+TK_PARALLEL: '//';
 TK_XOR: 'xor';
 TK_RSHIFT: '>>';
 TK_LSHIFT: '<<';
@@ -532,6 +596,7 @@ TK_AUG_CONCAT: '||:=';
 TK_AUG_RSHIFT: '>>:=';
 TK_AUG_LSHIFT: '<<:=';
 
+
 TK_RETURNS: 'returns';
 TK_NEW: 'new';
 TK_LOW: 'low';
@@ -545,6 +610,34 @@ TK_CALL: 'call';
 TK_BOGUS: 'bogus';
 TK_PERIOD: '.';
 TK_PROC: 'proc';
+TK_IF: 'if';
+TK_FI: 'fi';
+TK_ELSE: 'else';
+TK_DO: 'do';
+TK_OD: 'od';
+TK_FA: 'fa';
+TK_AF: 'af';
+TK_CO: 'co';
+TK_OC: 'oc';
+TK_IN: 'in';
+TK_NI: 'ni';
+TK_BEGIN: 'begin';
+TK_DESTROY: 'destroy';
+TK_FORWARD: 'forward';
+TK_REPLY: 'reply';
+TK_RETURN: 'return';
+TK_NEXT: 'next';
+TK_EXIT: 'exit';
+TK_STOP: 'stop';
+TK_SKIP: 'skip';
+TK_RECEIVE: 'receive';
+TK_SUCHTHAT: 'st';
+TK_BY: 'by';
+TK_V: 'V';
+TK_P: 'P';
+TK_TO: 'to';
+TK_DOWNTO: 'downto';
+TK_WRITE: 'write';
 
 TK_SEND:'send';
 TK_VM:'vm';
@@ -580,4 +673,5 @@ TK_END: 'end';
 TK_INITIAL: 'initial';
 TK_FINAL: 'final';
 
-TK_ID: [a-zA-z]+;
+TK_ID: [a-zA-Z] [a-zA-Z0-9]* ;
+

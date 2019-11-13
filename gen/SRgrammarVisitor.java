@@ -1,4 +1,4 @@
-// Generated from /home/laura-angelica/Documents/UNAL/2019-2/languages/Traductor simple/grammar/SRgrammar.g4 by ANTLR 4.7.2
+// Generated from /home/laura-angelica/Documents/UNAL/2019-2/languages/SR_traductor/grammar/SRgrammar.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -22,11 +22,23 @@ public interface SRgrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSeparate_body(SRgrammarParser.Separate_bodyContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link SRgrammarParser#maybe_params}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMaybe_params(SRgrammarParser.Maybe_paramsContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link SRgrammarParser#spec_body}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitSpec_body(SRgrammarParser.Spec_bodyContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SRgrammarParser#comp_params}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComp_params(SRgrammarParser.Comp_paramsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SRgrammarParser#combined_specpart}.
 	 * @param ctx the parse tree
@@ -34,11 +46,23 @@ public interface SRgrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCombined_specpart(SRgrammarParser.Combined_specpartContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link SRgrammarParser#body_stmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBody_stmt(SRgrammarParser.Body_stmtContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link SRgrammarParser#body_stmt_ls}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitBody_stmt_ls(SRgrammarParser.Body_stmt_lsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SRgrammarParser#id_opt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitId_opt(SRgrammarParser.Id_optContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SRgrammarParser#end_id}.
 	 * @param ctx the parse tree
@@ -220,6 +244,24 @@ public interface SRgrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDo_stmt(SRgrammarParser.Do_stmtContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link SRgrammarParser#write_stmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWrite_stmt(SRgrammarParser.Write_stmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SRgrammarParser#write_ls}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWrite_ls(SRgrammarParser.Write_lsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SRgrammarParser#id_list}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitId_list(SRgrammarParser.Id_listContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link SRgrammarParser#guarded_cmd}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -340,6 +382,12 @@ public interface SRgrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStmt(SRgrammarParser.StmtContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link SRgrammarParser#post_processing_opt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPost_processing_opt(SRgrammarParser.Post_processing_optContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link SRgrammarParser#proc}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -429,6 +477,12 @@ public interface SRgrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitOper_def_lp(SRgrammarParser.Oper_def_lpContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SRgrammarParser#oper_def_lp_aux}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOper_def_lp_aux(SRgrammarParser.Oper_def_lp_auxContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SRgrammarParser#op_or_ext}.
 	 * @param ctx the parse tree
@@ -520,11 +574,11 @@ public interface SRgrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitNew_item(SRgrammarParser.New_itemContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SRgrammarParser#subscriṕts_opt}.
+	 * Visit a parse tree produced by {@link SRgrammarParser#subscripts_opt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSubscriṕts_opt(SRgrammarParser.Subscriṕts_optContext ctx);
+	T visitSubscripts_opt(SRgrammarParser.Subscripts_optContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SRgrammarParser#return_spec_null}.
 	 * @param ctx the parse tree
@@ -766,6 +820,12 @@ public interface SRgrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBounds(SRgrammarParser.BoundsContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link SRgrammarParser#bound_lpaux}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBound_lpaux(SRgrammarParser.Bound_lpauxContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link SRgrammarParser#bound_lp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -778,17 +838,17 @@ public interface SRgrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBracketed_list(SRgrammarParser.Bracketed_listContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SRgrammarParser#subscriṕts}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSubscriṕts(SRgrammarParser.SubscriṕtsContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link SRgrammarParser#id_subs}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitId_subs(SRgrammarParser.Id_subsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SRgrammarParser#id_subs_lpaux}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitId_subs_lpaux(SRgrammarParser.Id_subs_lpauxContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SRgrammarParser#id_subs_lp}.
 	 * @param ctx the parse tree
@@ -849,6 +909,18 @@ public interface SRgrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitSpec_stmt(SRgrammarParser.Spec_stmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SRgrammarParser#optional_sep}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOptional_sep(SRgrammarParser.Optional_sepContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link SRgrammarParser#spec_stmt_lsaux}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSpec_stmt_lsaux(SRgrammarParser.Spec_stmt_lsauxContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link SRgrammarParser#spec_stmt_ls}.
 	 * @param ctx the parse tree
