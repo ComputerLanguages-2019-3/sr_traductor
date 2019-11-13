@@ -26,7 +26,7 @@ body_stmt: common_stmt
            |extend_clause;
 
 body_stmt_ls: body_stmt
-            |body_stmt_ls TK_SEPARATOR body_stmt;
+            |body_stmt_ls (TK_SEPARATOR)? body_stmt;
 
 id_opt:
        |TK_ID;

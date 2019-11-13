@@ -2,8 +2,8 @@ resource Queue
 op insert(item : int);
 op remove() returns item : int;
 body Queue(size : int)
-var sfore[O:=size-I ] : int;
-var fiont := 0, rear := 0, count := 0;
+var sfore[O:size-I ] : int;
+var fiont := 0, rear := 0, count := 5;
 proc insert(item)
 if count<size -> store[rear] := item; rear := (reur+l)%size; count++
 fi
