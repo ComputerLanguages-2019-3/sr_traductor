@@ -59,7 +59,7 @@ quantifiers_opt: TK_LPAREN quantifier_lp TK_PAREN;
 
 in_cmd: quantifiers_opt in_spec sync_expr_opt sched_expr_opt TK_ARROW block;
 
-in_cmd_lp: in_cmd_lp_aux;
+in_cmd_lp: in_cmd in_cmd_lp_aux;
 
 in_cmd_lp_aux: TK_SQUARE in_cmd in_cmd_lp_aux
                | ;
@@ -102,7 +102,7 @@ block_item: decl
           | expr
           | import_clause;
 
-block_items: block_items_aux;
+block_items: block_item block_items_aux;
 
 block_items_aux: TK_SEPARATOR block_item block_items_aux
                 | ;
@@ -469,7 +469,7 @@ spec_component : comp_label spec_stmt_ls spec_body;
 
 component  : spec_component TK_SEPARATOR
             | combined_component TK_SEPARATOR
-            | separate_body TK_SEPARATOR;  // must match at least one value
+            | separate_body TK_SEPARATOR; // must match at least one value
 
 /** A value can be either a nested array/struct or a simple integer (INT) */
 
