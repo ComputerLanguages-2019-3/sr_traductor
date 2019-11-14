@@ -7,7 +7,7 @@
  * Visit http://www.pragmaticprogrammer.com/titles/tpantlr2 for more book information.
  ***/
 /** Convert short array inits like {1,2,3} to "\u0001\u0002\u0003" */
-public class SRToTest extends SRgrammarBaseListener {
+public class SRToPython extends SRgrammarBaseListener {
     /** Translate { to " */
     @Override
     public void exitComp_label(SRgrammarParser.Comp_labelContext ctx) {

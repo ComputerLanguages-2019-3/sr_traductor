@@ -1,7 +1,6 @@
 // import de librerias de runtime de ANTLR
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
-import java.io.File;
 
 public class SRTest {
     public static void main(String[] args) throws Exception {
@@ -18,7 +17,7 @@ public class SRTest {
             SRgrammarParser parser = new SRgrammarParser(tokens);
             ParseTree tree = parser.component(); // comienza el analisis en la regla inicial
             ParseTreeWalker walker = new ParseTreeWalker();
-            walker.walk(new SRToTest(), tree);
+            walker.walk(new SRToPython(), tree);
             //System.out.println(tree.toStringTree(parser)); // imprime el arbol en forma textual
         } catch (Exception e){
             System.err.println("Error (Test): " + e);
